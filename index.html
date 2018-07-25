@@ -280,7 +280,10 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">Importing</a>
+</li>
+<li>
+  <a href="plots.html">Plots</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -298,8 +301,68 @@ div.tocify {
 </div>
 
 
-<div id="get-the-data" class="section level2">
-<h2>Get the data</h2>
+<div id="import-data" class="section level2">
+<h2>Import data</h2>
+<p>Importing the data following the example showed in: <a href="https://ntguardian.wordpress.com/2017/03/27/introduction-stock-market-data-r-1/">An Introduction to Stock Market Data Analysis with R</a></p>
+<pre class="r"><code>if (!require(&quot;quantmod&quot;)) {
+    install.packages(&quot;quantmod&quot;)
+    library(quantmod)
+}</code></pre>
+<pre><code>## Loading required package: quantmod</code></pre>
+<pre><code>## Warning: package &#39;quantmod&#39; was built under R version 3.5.1</code></pre>
+<pre><code>## Loading required package: xts</code></pre>
+<pre><code>## Warning: package &#39;xts&#39; was built under R version 3.5.1</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## Loading required package: TTR</code></pre>
+<pre><code>## Version 0.4-0 included new data defaults. See ?getSymbols.</code></pre>
+<pre class="r"><code># set dates
+start &lt;- Sys.Date() - 365
+end &lt;- Sys.Date()
+
+getSymbols(&quot;JUVE.MI&quot;, src = &quot;yahoo&quot;, from = start, to = end)</code></pre>
+<pre><code>## &#39;getSymbols&#39; currently uses auto.assign=TRUE by default, but will
+## use auto.assign=FALSE in 0.5-0. You will still be able to use
+## &#39;loadSymbols&#39; to automatically load data. getOption(&quot;getSymbols.env&quot;)
+## and getOption(&quot;getSymbols.auto.assign&quot;) will still be checked for
+## alternate defaults.
+## 
+## This message is shown once per session and may be disabled by setting 
+## options(&quot;getSymbols.warning4.0&quot;=FALSE). See ?getSymbols for details.</code></pre>
+<pre><code>## 
+## WARNING: There have been significant changes to Yahoo Finance data.
+## Please see the Warning section of &#39;?getSymbols.yahoo&#39; for details.
+## 
+## This message is shown once per session and may be disabled by setting
+## options(&quot;getSymbols.yahoo.warning&quot;=FALSE).</code></pre>
+<pre><code>## Warning: JUVE.MI contains missing values. Some functions will not work if
+## objects contain missing values in the middle of the series. Consider using
+## na.omit(), na.approx(), na.fill(), etc to remove or replace them.</code></pre>
+<pre><code>## [1] &quot;JUVE.MI&quot;</code></pre>
+<pre class="r"><code>class(JUVE.MI)</code></pre>
+<pre><code>## [1] &quot;xts&quot; &quot;zoo&quot;</code></pre>
+<pre class="r"><code>head(JUVE.MI)</code></pre>
+<pre><code>##            JUVE.MI.Open JUVE.MI.High JUVE.MI.Low JUVE.MI.Close
+## 2017-07-25       0.5730       0.6090      0.5680        0.5985
+## 2017-07-26       0.6020       0.6040      0.5740        0.5770
+## 2017-07-27       0.5820       0.5850      0.5715        0.5765
+## 2017-07-28       0.5790       0.5900      0.5745        0.5870
+## 2017-07-31       0.5895       0.5975      0.5765        0.5925
+## 2017-08-01       0.5930       0.6440      0.5860        0.6085
+##            JUVE.MI.Volume JUVE.MI.Adjusted
+## 2017-07-25       19444884           0.5985
+## 2017-07-26       11820555           0.5770
+## 2017-07-27        3529920           0.5765
+## 2017-07-28        4937531           0.5870
+## 2017-07-31        4502461           0.5925
+## 2017-08-01       22953159           0.6085</code></pre>
+<pre class="r"><code>candleChart(JUVE.MI, up.col = &quot;black&quot;, dn.col = &quot;red&quot;, theme = &quot;white&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>save(JUVE.MI,file=&quot;juve.Rdat&quot;)</code></pre>
 </div>
 
 

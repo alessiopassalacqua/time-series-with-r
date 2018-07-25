@@ -5,4 +5,37 @@ output:
     toc_float: true
 ---
 
-## Get the data
+
+
+
+
+
+
+## Import data 
+
+Importing the data following the example showed in:
+[An Introduction to Stock Market Data Analysis with R](https://ntguardian.wordpress.com/2017/03/27/introduction-stock-market-data-r-1/)
+
+
+```{r}
+if (!require("quantmod")) {
+    install.packages("quantmod")
+    library(quantmod)
+}
+
+# set dates
+start <- Sys.Date() - 365
+end <- Sys.Date()
+
+getSymbols("JUVE.MI", src = "yahoo", from = start, to = end)
+
+class(JUVE.MI)
+head(JUVE.MI)
+
+candleChart(JUVE.MI, up.col = "black", dn.col = "red", theme = "white")
+
+save(JUVE.MI,file="juve.Rdat")
+```
+
+
+
