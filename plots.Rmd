@@ -1,0 +1,54 @@
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+
+```{r}
+library(fpp2)
+load("juve.Rdat")
+```
+
+
+# Time series graphics
+
+## Time plots
+
+```{r}
+
+juve.mi <- as.ts(JUVE.MI[,"JUVE.MI.Close"])
+
+autoplot(JUVE.MI[,"JUVE.MI.Close"]) +
+  ggtitle("Close") +
+  xlab("Date") +
+  ylab("Euro")
+
+```
+
+## Scatterplot Matrices 
+
+
+```{r}
+juve.ts <- as.ts(JUVE.MI)
+colnames(juve.ts) <- c("Open","High","Low","Close","Volume","Adjusted")
+autoplot(juve.ts, facets=TRUE) +
+  ylab("Juve Stock Market")
+```
+
+
+```{r}
+juve.ts %>% as.data.frame() %>% GGally::ggpairs()
+```
+
+# Lag plots
+
+```{r}
+gglagplot(juve.ts[,"Close"])
+```
+
+# Autocorrelation
+
+```{r}
+ggAcf(juve.ts[,"Close"])
+```
+

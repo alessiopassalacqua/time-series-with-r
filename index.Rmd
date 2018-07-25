@@ -8,7 +8,7 @@ output:
 
 
 
-
+NOTE: The information in this post is of a general nature containing information and opinions from the author’s perspective. None of the content of this post should be considered financial advice. Furthermore, any code written here is provided without any form of guarantee. Individuals who choose to use it do so at their own risk.
 
 
 ## Import data 
