@@ -3,6 +3,8 @@ output_dir: '.'
 navbar:
   title: Time series with R
   left:
+  - text: "Readme"
+    href: read.html
   - text: "Importing"
     href: index.html
   - text: "Plots"

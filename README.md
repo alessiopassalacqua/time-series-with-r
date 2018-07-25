@@ -7,7 +7,7 @@ The R code are based on the book:
 
 by *Rob J Hyndman and George Athanasopoulos*
 
-The goal is reproduce the time serie analysis by using a real dataset.
+The goal is reproduce the time serie analysis proposed by the book's authors by using a real dataset.
 
 The data used for the example purpose are the stock price of FC Juventus, italian football team
 
