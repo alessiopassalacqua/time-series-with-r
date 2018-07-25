@@ -6,6 +6,10 @@ output:
 ---
 
 
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
 
 ## Import data 
 
@@ -28,10 +32,15 @@ getSymbols("JUVE.MI", src = "yahoo", from = start, to = end)
 class(JUVE.MI)
 head(JUVE.MI)
 
-candleChart(JUVE.MI, up.col = "black", dn.col = "red", theme = "white")
+
 
 save(JUVE.MI,file="juve.Rdat")
 ```
 
 
+
+
+```{r}
+candleChart(JUVE.MI, up.col = "black", dn.col = "red", theme = "white")
+```
 
